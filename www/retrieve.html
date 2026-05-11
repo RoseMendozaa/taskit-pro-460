@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Tasks</title>
+    <link rel="stylesheet" href="styles/style1.css">
+    <link rel="stylesheet" href="styles/style2.css">
+    <link rel="stylesheet" href="styles/style3.css">
+
+    <script>
+    let allTasks = [];
+
+    window.addEventListener("load", readAll);
+
+    function readAll() {
+        fetch("http://localhost:7777/retrieve")
+        .then(response => response.json())
+        .then(function(data) {
+            allTasks = data;
+            displayTasks(allTasks);
+        });
+    }
+
+    function applyFilters() {
+        let searchText = document.getElementById("searchBox").value.toLowerCase();
+        let categoryValue = document.getElementById("categoryFilter").value;
+        let priorityValue = document.getElementById("priorityFilter").value;
+        let statusValue = document.getElementById("statusFilter").value;
+
+        let filteredTasks = allTasks.filter(function(row) {
+            let matchesSearch = row.taskname.toLowerCase().includes(searchText);
+            let matchesCategory = categoryValue === "All" || row.taskcategory === categoryValue;
+            let matchesPriority = priorityValue === "All" || row.taskpriority === priorityValue;
+            let matchesStatus = statusValue === "All" || (row.taskstatus || "Not Started") === statusValue;
+
+            return matchesSearch && matchesCategory && matchesPriority && matchesStatus;
+        });
+
+        displayTasks(filteredTasks);
+    }
+
+    function clearFilters() {
+        document.getElementById("searchBox").value = "";
+        document.getElementById("categoryFilter").value = "All";
+        document.getElementById("priorityFilter").value = "All";
+        document.getElementById("statusFilter").value = "All";
+        displayTasks(allTasks);
+    }
+
+    function displayTasks(data) {
+        let records = document.getElementById("records");
+        records.innerHTML = "";
+
+        if (data.length === 0) {
+            records.innerHTML = `<div class="textp"><b>No tasks found.</b></div>`;
+            return;
+        }
+
+        data.forEach(row => 
+            records.innerHTML += `
+                <div class="textp">
+                    <b>ID:</b> ${row.taskid} |
+                    <b>Name:</b> ${row.taskname} |
+                    <b>Priority:</b> ${row.taskpriority} |
+                    <b>Date:</b> ${row.taskdate} |
+                    <b>Category:</b> ${row.taskcategory} |
+                    <b>Status:</b> ${row.taskstatus || "Not Started"} |
+                    <b>Details:</b> ${row.taskdetails}
+                </div>
+                <br>
+            `
+        );
+    }
+    </script>
+</head>
+
+<body>
+
+<div class="main">
+
+    <!-- LEFT SIDEBAR -->
+    <div class="menu">
+        <h1 class="myH1">TaskIT - View Tasks</h1>
+        <img src="images/pic4.png" class="myImg" alt="TaskIT logo"><br><br>
+
+        <ul>
+            <li><a class="myA" href="index.html">Home</a></li>
+            <li><a class="myA" href="create.html">Create</a></li>
+            <li><a class="myA" href="update.html">Update</a></li>
+            <li><a class="myA" href="delete.html">Delete</a></li>
+        </ul>
+    </div>
+
+    <!-- RIGHT CONTENT -->
+    <div class="meat">
+        <h2 class="myH2a">All Tasks</h2>
+
+        <div class="textp">
+            <b>Search:</b><br>
+            <input type="text" id="searchBox" class="blueback textw" placeholder="Search by task name">
+            <br><br>
+
+            <b>Filter by Category:</b><br>
+            <select id="categoryFilter" class="blueback textw">
+                <option value="All">All</option>
+                <option value="Personal">Personal</option>
+                <option value="Academic">Academic</option>
+                <option value="Professional">Professional</option>
+            </select>
+            <br><br>
+
+            <b>Filter by Priority:</b><br>
+            <select id="priorityFilter" class="blueback textw">
+                <option value="All">All</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+            <br><br>
+
+            <b>Filter by Status:</b><br>
+            <select id="statusFilter" class="blueback textw">
+                <option value="All">All</option>
+                <option value="Not Started">Not Started</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+            </select>
+            <br><br>
+
+            <input type="button" value="Apply Filters" class="textp" onclick="applyFilters()">
+            <input type="button" value="Clear" class="textp" onclick="clearFilters()">
+        </div>
+
+        <br>
+        <div id="records"></div>
+    </div>
+
+</div>
+
+</body>
+</html>

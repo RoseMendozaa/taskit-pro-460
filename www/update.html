@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Tasks</title>
+
+    <link rel="stylesheet" href="styles/style1.css">
+    <link rel="stylesheet" href="styles/style2.css">
+    <link rel="stylesheet" href="styles/style3.css">
+
+    <script>
+    window.addEventListener("load", readAll);
+
+    function readAll() {
+        fetch("http://localhost:7777/retrieve")
+        .then(response => response.json())
+        .then(function(data) {
+            let updateList = document.getElementById("updateList");
+            updateList.innerHTML = "";
+
+            if (data.length === 0) {
+                updateList.innerHTML = `<div class="textp"><b>No tasks found.</b></div>`;
+                return;
+            }
+
+            data.forEach(row =>
+                updateList.innerHTML += `
+                    <div class="textp">
+                        <a class="myA" href="update-one.html?taskid=${row.taskid}">
+                            EDIT ${row.taskid}
+                        </a>
+                        — <b>${row.taskname}</b> |
+                        ${row.taskpriority} |
+                        ${row.taskcategory} |
+                        ${row.taskstatus || "Not Started"} |
+                        ${row.taskdetails}
+                    </div>
+                    <br>
+                `
+            );
+        });
+    }
+    </script>
+</head>
+
+<body>
+
+<div class="main">
+
+    <!-- LEFT SIDEBAR -->
+    <div class="menu">
+        <h1 class="myH1">TaskIT - Update Tasks</h1>
+        <img src="images/pic3.png" class="myImg" alt="TaskIT logo"><br><br>
+
+        <ul>
+            <li><a class="myA" href="index.html">Home</a></li>
+            <li><a class="myA" href="create.html">Create</a></li>
+            <li><a class="myA" href="retrieve.html">View</a></li>
+            <li><a class="myA" href="delete.html">Delete</a></li>
+        </ul>
+    </div>
+
+    <!-- RIGHT CONTENT -->
+    <div class="meat">
+        <h2 class="myH2a">Select a Task to Edit</h2>
+        <p class="textp">Choose any task below to update its details, priority, category, due date, or status.</p>
+        <br>
+        <div id="updateList"></div>
+    </div>
+
+</div>
+
+</body>
+</html>
