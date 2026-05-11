@@ -1,5 +1,0 @@
-.main { display:flex; flex-direction: row;}
-.menu { background:rgb(73, 8, 8);  width:25%;}
-.meat { background: rgb(172, 155, 215); width:75%}
-li {display: inline; text-align: center;}
-li:after {content:" | "}
