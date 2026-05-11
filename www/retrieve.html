@@ -12,7 +12,7 @@
     window.addEventListener("load", readAll);
 
     function readAll() {
-        fetch("http://localhost:7777/retrieve")
+       fetch("/retrieve")
         .then(response => response.json())
         .then(function(data) {
             allTasks = data;
