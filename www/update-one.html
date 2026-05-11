@@ -21,7 +21,7 @@
         const params = new URLSearchParams(location.search);
         id = params.get("taskid");
 
-        fetch("http://localhost:7777/retrieve-one/" + id)
+        fetch("/retrieve-one/" + id)
         .then(response => response.json())
         .then(function(data) {
             document.getElementById("taskid").value = data.taskid;
@@ -45,7 +45,7 @@
             taskstatus: document.getElementById("taskstatus").value
         };
 
-        fetch("http://localhost:7777/update", {
+        fetch("/update", {
             method: "PUT",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(data)
