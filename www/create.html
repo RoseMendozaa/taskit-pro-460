@@ -121,7 +121,7 @@ async function createTask() {
         taskstatus: document.getElementById("taskstatus").value
     };
 
-    let response = await fetch("http://localhost:7777/create", {
+    let response = await fetch("/create", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
