@@ -1,0 +1,149 @@
+/* SIDEBAR COLOR */
+.menu {
+    background: rgb(73, 8, 8); /* deep red */
+}
+
+/* CONTENT AREA COLOR */
+.meat {
+    background: rgb(172, 155, 215); /* purple */
+}
+
+/* Make nav links white */
+li a {
+    color: white;
+    font-size: 16pt;
+}
+
+/* ✅ CENTER THE IMAGE CORRECTLY */
+.myImg {
+    display: block;
+    margin: 10px auto 20px auto;  /* centers the image */
+    max-width: 90%;               /* keeps it inside the red column */
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f1f4;
+}
+
+.main {
+    display: flex;
+    min-height: 100vh;
+}
+
+.menu {
+    width: 260px;
+    background-color: #5a1f36;
+    color: white;
+    padding: 30px 20px;
+    box-sizing: border-box;
+}
+
+.meat {
+    flex: 1;
+    background-color: #fffafc;
+    padding: 35px;
+    box-sizing: border-box;
+}
+
+.myH1 {
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.myH2a {
+    color: #5a1f36;
+    margin-bottom: 10px;
+}
+
+.myP {
+    color: white;
+}
+
+.textp {
+    color: #4a3b42;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.myA {
+    color: #ffd6e0;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.myA:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+li {
+    margin-bottom: 12px;
+}
+
+.myImg {
+    width: 120px;
+    height: auto;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.blueback,
+.textw,
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    max-width: 500px;
+    padding: 10px;
+    border: 1px solid #d8b7c3;
+    border-radius: 8px;
+    background-color: #fff0f5;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input[type="button"],
+button,
+input[type="submit"] {
+    background-color: #c74b72;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+input[type="button"]:hover,
+button:hover,
+input[type="submit"]:hover {
+    background-color: #a93d5f;
+}
+
+#records,
+#updateList,
+#deleteList,
+#taskInfo {
+    background-color: white;
+    border: 1px solid #ead6dd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.textp b {
+    color: #5a1f36;
+}

@@ -1,0 +1,57 @@
+.bold {
+    font-family: Arial, sans-serif;
+    font-size: 14pt;
+    color: purple;
+}
+
+.myH1 {
+    font-family: Arial;
+    font-size: 24pt;
+    color: blue;
+    text-align: center;
+}
+
+.myImg {
+    width: 256px;
+    display: block;
+    margin: auto;
+}
+
+.myP {
+    font-family: Arial;
+    font-size: 18pt;
+    color: red;
+}
+
+.myH2a {
+    font-family: Arial;
+    color: orange;
+}
+
+.myH2b {
+    font-family: Arial;
+    color: greenyellow;
+}
+
+.myA {
+    color: black;
+    text-decoration: none;
+}
+
+/* Pretty text for labels */
+.textp {
+    font-family: cursive;
+    font-weight: bold;
+    font-size: 18pt;
+    color: blueviolet;
+}
+
+/* Input background */
+.blueback {
+    background: rgb(231, 207, 211);
+}
+
+/* For inputs you want narrower */
+.textw {
+    width: 25%;
+}
