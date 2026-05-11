@@ -16,7 +16,7 @@
         const params = new URLSearchParams(location.search);
         taskid = params.get("taskid");
 
-        fetch("http://localhost:7777/retrieve-one/" + taskid)
+        fetch("/retrieve-one/" + taskid)
             .then(response => response.json())
             .then(data => {
                 document.getElementById("taskInfo").innerHTML = `
@@ -34,7 +34,7 @@
     }
 
     function deleteTask() {
-        fetch("http://localhost:7777/delete/" + taskid, { method: "DELETE" })
+        fetch("/delete/" + taskid, { method: "DELETE" })
             .then(() => location.href = "retrieve.html");
     }
     </script>
